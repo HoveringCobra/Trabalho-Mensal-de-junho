@@ -21,4 +21,6 @@ public class Diciplina {
     @NotBlank(message = "Nome da Diciplina é obrigatorio ")
     @Column(nullable = false, unique = true)
     private String nome;
+
+
 }

@@ -16,6 +16,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 public class ProfessorService {
     private final ProfessorRepository repository;
 
+
     public List<Professor> ListarProfessores() {
         return repository.findAll();
     }

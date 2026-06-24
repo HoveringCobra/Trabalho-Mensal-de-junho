@@ -8,17 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 
 @Service
 @RequiredArgsConstructor
-public class DiciplpinaService {
+public class DiciplinaService {
     private final DiciplinaRepository repository;
 
-    public DiciplpinaService(DiciplinaRepository repository) {
-        this.repository = repository;
-    }
+    //public DiciplpinaService(DiciplinaRepository repository) {
+      //  this.repository = repository;
+    //}
 
     public List<Diciplina> ListarDiciplina() { return repository.findAll(); }
 
@@ -30,13 +29,13 @@ public class DiciplpinaService {
     @Transactional
     public Optional<Diciplina> atualizar (Long id , Diciplina diciplinaDetails){
         return repository.findById(id).map( diciplina ->{
-            diciplina.SetNome(diciplinaDetails.getNome());
+            diciplina.setNome(diciplinaDetails.getNome());
             return repository.save(diciplina);
         });
     }
 
     @Transactional
-    public Boolean excluir (long id) {
+    public Boolean excluir (Long id) {
         return repository.findById(id).map( diciplina ->{
             repository.delete(diciplina);
             return true;
