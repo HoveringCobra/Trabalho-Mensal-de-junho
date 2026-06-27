@@ -1,6 +1,6 @@
 package com.Trabalho.mensal.model;
 
-import jakarta.annotation.sql.DataSourceDefinition;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

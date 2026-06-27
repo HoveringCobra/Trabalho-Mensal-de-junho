@@ -1,7 +1,6 @@
 package com.Trabalho.mensal.controller;
 
 import com.Trabalho.mensal.model.Professor;
-import com.Trabalho.mensal.repository.ProfessorRepository;
 import com.Trabalho.mensal.service.ProfessorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
