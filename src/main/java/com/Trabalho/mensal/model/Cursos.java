@@ -25,4 +25,9 @@ public class Cursos {
     @JoinColumn(name = "Professor_id", nullable = false)
     @NotNull(message = "O Id do Professor é obrigatório")
     private Professor professor;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "area_conhecimento_id", nullable = false)
+    @NotNull(message = "A área do conhecimento é obrigatória")
+    private AreaConhecimento areaConhecimento;
 }

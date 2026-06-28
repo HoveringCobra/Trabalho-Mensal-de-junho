@@ -28,6 +28,7 @@ public class CursosService {
     public Optional<Cursos> atualizar(Long id, Cursos cursosDetails) {
         return cursosRepository.findById(id).map(curso -> {
             curso.setNome(cursosDetails.getNome());
+            curso.setAreaConhecimento(cursosDetails.getAreaConhecimento());
             curso.setProfessor(cursosDetails.getProfessor());
             return cursosRepository.save(curso);
         });
