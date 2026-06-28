@@ -6,7 +6,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +22,18 @@ public class DiciplinaController {
 
     private final DiciplinaService service;
 
-    @GetMapping("/{id}")
+    @GetMapping
     @Operation(summary = "Listar todas as diciplinas", description = "Mostras todas as diciplinas já Cadastradas")
     public List<Diciplina> listar(){return service.ListarDiciplina();}
-    @GetMapping
-    @Operation(summary = "BUscar por ID", description = "Retornar a diciplina que foi informado o id")
+
+    @PostMapping
+    @Operation(summary = "Cdastrar nova dicipilna")
+    public ResponseEntity<Diciplina> cadastrar(@Valid @RequestBody Diciplina diciplina) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(diciplina));
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Buscar por ID", description = "Retornar a diciplina que foi informado o id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Diciplina encontrada com sucesso "),
             @ApiResponse(responseCode = "404", description = "Diciplina nao encontrada" )

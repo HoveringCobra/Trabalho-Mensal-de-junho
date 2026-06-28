@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,7 +46,7 @@ public class AreaConhecimentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(areaConhecimentoService.salvar(areaConhecimento));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Operation(summary = "Atualizar area de conhecimento")
     public ResponseEntity<AreaConhecimento> atualizar(@PathVariable Long id, @Valid @RequestBody AreaConhecimento areaConhecimento) {
         return areaConhecimentoService.atualizar(id, areaConhecimento)

@@ -31,7 +31,6 @@ public class AreaConhecimentoService {
     public Optional<AreaConhecimento> atualizar(Long id,AreaConhecimento areaConhecimentoDetails){
         return areaConhecimentoRepository.findById(id).map(areaConhecimento ->  {
             areaConhecimento.setNome(areaConhecimentoDetails.getNome());
-            areaConhecimento.setCurso(areaConhecimentoDetails.getCurso());
             return areaConhecimentoRepository.save(areaConhecimento);
         });
     }

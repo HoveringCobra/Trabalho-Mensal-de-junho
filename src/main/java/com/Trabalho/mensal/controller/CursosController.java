@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/curso")
 @RequiredArgsConstructor
 @Tag(name = "Cursos", description = "Gerenciamento de cursos da instituição")
 public class CursosController {
@@ -24,7 +24,7 @@ public class CursosController {
 
     @GetMapping
     @Operation(summary = "Lista todos os cursos", description = "Retorna a lista de todos os cursos com seus respectivos representantes")
-    public List<Cursos> lista() {
+    public List<Cursos> listarTodos() {
         return cursosService.listarTodos();
     }
 
@@ -35,7 +35,7 @@ public class CursosController {
             @ApiResponse(responseCode = "404", description = "Curso não encontrado")
 
     })
-    public ResponseEntity<Cursos> buscar(@PathVariable Long id) {
+    public ResponseEntity<Cursos> buscarPorId(@PathVariable long id) {
         return cursosService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -55,7 +55,7 @@ public class CursosController {
               .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     @Operation(summary = "Remover curso do sistema")
     public ResponseEntity<Void> remover(@PathVariable Long id) {
         return cursosService.remover(id)
